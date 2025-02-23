@@ -19,7 +19,7 @@ echo "        Raspberry Pis Connectivity to MASTER"
 echo -e "$separator\n"
 
 # Column headers
-printf "%-15s | %-15s | %-10s | %-15s | %-25s\n" "Alias" "IP Address" "Status" "SSH Status" "MASTER Communication"
+printf "%-15s | %-15s | %-10s | %-12s | %-25s\n" "Alias" "IP Address" "Status" "SSH Status" "MASTER Communication"
 echo "$separator"
 
 for alias in "${!WORKERS[@]}"; do
@@ -34,7 +34,7 @@ for alias in "${!WORKERS[@]}"; do
             ssh_status="❌ FAILED"
         fi
         
-        if ssh "$WORKER_USERNAME@$ip" "ping -c 2 -W 1 $MASTER >/dev/null" 2>/dev/null; then
+        if ssh "$WORKER_USERNAME@$ip" "ping -c 2 -W 1 $MASTER_IP >/dev/null" 2>/dev/null; then
             master_comm="✅ Reachable"
         else
             master_comm="❌ FAILED"
@@ -45,7 +45,7 @@ for alias in "${!WORKERS[@]}"; do
         master_comm="N/A"
     fi
     
-    printf "%-15s | %-15s | %-10s | %-15s | %-25s\n" "$alias" "$ip" "$online_status" "$ssh_status" "$master_comm"
+    printf "%-15s | %-15s | %-10s | %-14s | %-25s\n" "$alias" "$ip" "$online_status" "$ssh_status" "$master_comm"
 done
 
 echo -e "\n$separator"
