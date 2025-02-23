@@ -32,7 +32,7 @@ cd pi-cluster-ssh-manager
 - Copy `example.env` to `.env` and edit with your actual values:
 ```bash
 cp example.env .env
-nano .env
+vim .env
 ```
 
 #### Example `.env` file:
@@ -57,7 +57,7 @@ SSH_KEY="~/.ssh/id_ed25519.pub"
 - Copy `example_workers.txt` to `workers.txt` and edit with your actual devices:
 ```bash
 cp example_workers.txt workers.txt
-nano workers.txt
+vim workers.txt
 ```
 
 #### Example `workers.txt` file:
